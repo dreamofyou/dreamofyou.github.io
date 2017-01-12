@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{width: 800px;margin: 0 auto;font-family: "楷体";font-size: 15px;background-color: aliceblue;}
+        .div1{width: 100%;height: 30px;font-family: "楷体";font-size: 20px;line-height: 30px;background-color: royalblue;}
+        #btn{width: 400px;height: 100px;margin: auto;display: block;font-family: '微软雅黑';text-align: center;line-height: 100px;font-size: 50px;}
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="div1">Array</div>
+    <p>是相同数据类型的元素按一定顺序排列的集合</p>
+    <hr>
+    <div class="div1">arr的方法</div>
+    <p>push():向数组的末尾添加一个或更多元素，并返回新的长度。</p>
+    <p>unshift():向数组的开头添加一个或更多元素，并返回新的长度。</p>
+    <hr>
+    <div class="div1">升序排列</div>
+    <p>
+        arr.sort(function(a,b){<br>
+        return a-b<br>
+        })
+    </p>
+    <hr>
+    <div class="div1">降序排列</div>
+    <p>
+        arr.sort(function(a,b){<br>
+        return b-a<br>
+        })
+    </p>
+    <div class="div1">倒计时</div>
+    <button id="btn">获取验证码</button>
+</div>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+    var time = 5
+    btn.onclick = function () {
+        btn.disabled = true;
+        btn.innerHTML = '5秒后再来'
+        var t = setInterval(function () {
+            time--;
+            btn.innerHTML = time +'秒后再来';
+            if (time<0){
+                clearInterval(t);
+                btn.innerHTML = '获取验证码';
+                time = 5;
+                btn.disabled = false;
+            }
+        },1000)
+    }
+</script>
