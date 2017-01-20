@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body id="body">
+    <script>
+        var body = document.getElementById('body')
+        var str = "[ti:一次就好][ar:沈腾][al:电影《夏洛特烦恼》插曲][00:28.89] 一次就好[00:30.67] 我带你去看天荒地老[00:34.93] 在阳光灿烂的日子里开怀大笑[00:41.25] 在自由自在的空气里吵吵闹闹[00:46.51] 你可知道 我唯一的想要[00:52.60] 世界太小 我陪你去到天涯海角[00:59.15] 在没有烦恼的角落里停止寻找[01:05.30] 在无忧无虑的时光里慢慢变老[01:10.68] 你可知道[01:12.56] 我全部的心跳都随你跳[01:44.17] 一次就好[01:45.69] 我带你去看天荒地老[01:50.16] 在阳光灿烂的日子里开怀大笑[01:56.15] 在自由自在的空气里吵吵闹闹[02:01.69] 你可知道 我唯一的想要[02:08.34] 世界太小 我陪你去到天涯海角[02:14.28] 在没有烦恼的角落里停止寻找[02:20.76] 在无忧无虑的时光里慢慢变老[02:25.61] 你可知道 我全部的心跳都随你跳"
+        var arrLeft = str.split('[');
+        console.log(arrLeft)
+        var arrRight = [];
+        var showLrcArr = [];
+        var l1 = arrLeft.length;
+        for (var i = 0;i<l1;i++){
+            arrRight.push(arrLeft[i])
+
+        }
+        var name = arrRight[1]//ti:一次就好];
+        var singer = arrRight[2]//ar:沈腾];
+        var provenance = arrRight[3]//al:电影《夏洛特烦恼》插曲];
+
+        var tiTitle = name.split(']')[0]
+        var titleArr = tiTitle.split(':')[1]
+
+
+        var arTitle = singer.split(']')[0]
+        var singerArr = arTitle.split(':')[1]
+
+
+        var alTitle = provenance.split(']')[0]
+        var provenanceArr = alTitle.split(':')[1]
+
+        showLrcArr.push(titleArr);
+        showLrcArr.push(singerArr)
+        showLrcArr.push(provenanceArr);
+        showLrcArr.push("&nbsp;");
+
+
+        for (var j = 4;j<=arrLeft.length-1;j++){
+                var timeLrc = arrRight[j]//00:28.89] 一次就好
+                var lrcArr = [];
+                lrcArr.push(timeLrc.split(']')[1]);
+                showLrcArr.push(lrcArr)
+        }
+
+        var ul = document.createElement('ul');
+        for (var m = 0;m<showLrcArr.length;m++){
+            var li = document.createElement('li');
+            li.innerHTML = showLrcArr[m];
+            ul.appendChild(li)
+            ul.style.textAlign = 'center'
+            li.style.listStyle = 'none'
+        }
+
+        body.appendChild(ul)
+    </script>
+</body>
+</html>
